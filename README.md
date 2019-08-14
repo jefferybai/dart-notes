@@ -2,13 +2,13 @@
 
 # dart-notes
 
-- [Dart的Event Loop](#Dart的Event Loop)
+- [Dart的Event Loop](#Dart的EventLoop)
 
 - [Future API](#FutureAPI)
 
 
 
-## Future API
+## FutureAPI
 
 Future表示一个延迟的计算过程、任务，但并不立即执行。
 
