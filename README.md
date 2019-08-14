@@ -37,7 +37,7 @@ Future<String> myFunc() {
   
 
 
-### Future类的静态方法
+#### Future类的静态方法
 ```
  //Future(dynamic computation()) 
  Future myFunc() {
