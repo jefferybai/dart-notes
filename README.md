@@ -4,17 +4,42 @@
 
 - [Dart的Event Loop](#Dart的EventLoop)
 
-- [Future API](#FutureAPI)
+- [Future](#Future)
 
 
 
-## FutureAPI
+## Future
 
-Future表示一个延迟的计算过程、任务，但并不立即执行。Future可以注册回调函数来处理计算的返回值或异常。
-Future的静态方法很丰富，如：
+dart中当执行return await () async {}的时候，实际上返回的是一个延迟计算的Future对象.
+
+Future表示一个延迟的计算过程、任务，它的执行遵循Dart的Event Loop策略。
+
+### 创建Future的两种方式（推荐第一种）
+```
+//第一种
+Future myFunc() {
+  return new Future(() async {
+    //Do something
+    var result = await http.get();
+    return result;
+  });
+
+//第二种 多用于自定义的class中
+Future<String> myFunc() {
+  Completer<String> comp = new Completer<String>();
+  //Do something
+  comp.complete("...");
+
+  return comp.future;
+}
 
 ```
- //Future(dynamic computation()) 最常用的构造方法
+  
+
+
+### Future类的静态方法
+```
+ //Future(dynamic computation()) 
  Future myFunc() {
   return new Future(() async {
     //Do something
@@ -34,7 +59,8 @@ int result = await Future.delayed(Duration(milliseconds: 2000),(){
 });
 
 ```
-Future实例可以调用的api如下：
-
-
+Future的公共方法
+```
+ 
+```
 
