@@ -83,10 +83,10 @@ new Future(()=> throw 'we have a problem')
     .catchError((error)=>print('$error')));
     
 //timeout: 超时
-Future.delayed(new Duration(seconds: 5), () => 1)
-      .timeout(new Duration(seconds: 2))
-      .then(print)
-      .catchError(print);//超时未处理，此处将打印TimeoutException after 0:00:02.000000: Future not completed
+new Future.delayed(new Duration(seconds: 5), () => 1)
+          .timeout(new Duration(seconds: 2))
+          .then(print)
+          .catchError(print);//超时未处理，此处将打印TimeoutException after 0:00:02.000000: Future not completed
   
  new Future.delayed(new Duration(seconds: 5), () => 1)
            .timeout(new Duration(seconds: 2), onTimeout: () => 0)
