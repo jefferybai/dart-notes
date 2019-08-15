@@ -61,6 +61,20 @@ int result = await Future.delayed(Duration(milliseconds: 2000),(){
 ```
 Future的公共方法
 ```
+//then：异步操作逻辑在这里写。
+new Future(() => futureTask)  //  异步任务的函数
+        .then((m) => "futueTask execute result:$m")  //   任务执行完后的子任务
+        .then((m) => m.length)  //  其中m为上个任务执行完后的返回的结果
+
+//whenComplete：异步完成时的回调。
+new Future(() => futureTask)  //  异步任务的函数
+        .then((m) => "futueTask execute result:$m")  //   任务执行完后的子任务
+        .then((m) => m.length)  //  其中m为上个任务执行完后的返回的结果
+        .then((m) => printLength(m))
+        .whenComplete(() => whenTaskCompelete);
+
+
+//catchError：捕获异常或者异步出错时的回调。
  
 ```
 
