@@ -26,7 +26,7 @@ Microtask Queue中的Event优先被处理，直到Microtask Queue队列中的Eve
     });
  2,
  Future.microtask(() => print('在Microtask queue里运行的Future'));
- 3，
+ 3,
  Futrue().then(() => print('then方法是Microtask运行方式'));
 ```
 代码加入Event队列的方式
