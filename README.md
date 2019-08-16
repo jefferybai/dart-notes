@@ -6,6 +6,46 @@
 
 - [Future](#Future)
 
+## Dart的EventLoop
+
+
+Dart是单线程模型，是一种Event-Looper以及Event-Queue的模型，所有的事件都是通过EventLooper的依次执行。
+
+Dart中的Main Isolate只有一个Event Looper，但是存在两个Event Queue:
+
+Event Queue
+Microtask Queue
+
+Microtask Queue中的Event优先被处理，直到Microtask Queue队列中的Event为空时，才会去执行Event Queue中的Event
+
+代码以Microtask运行的方式
+```
+ 1,
+ scheduleMicrotask((){
+        print('a microtask');
+    });
+ 2,
+ Future.microtask(() => print('在Microtask queue里运行的Future'));
+ 3，
+ Futrue().then(() => print('then方法是Microtask运行方式'));
+```
+代码加入Event队列的方式
+```
+Timer.run((){
+       print('a event');
+   });
+```
+
+所以如下代码，并不会输出"executed"
+```
+main() {
+   Timer.run(() { print("executed"); });  
+    foo() {
+      scheduleMicrotask(foo);  
+    }
+    foo();
+  }
+```
 
 
 ## Future
