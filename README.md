@@ -2,9 +2,12 @@
 
 # dart-notes
 
+
 - [Dart的Event Loop](#Dart的EventLoop)
 
 - [Future](#Future)
+
+- [Function](#Function)
 
 ## Dart的EventLoop
 
@@ -135,3 +138,4 @@ new Future.delayed(new Duration(seconds: 5), () => 1)
     
 ```
 
+## function
